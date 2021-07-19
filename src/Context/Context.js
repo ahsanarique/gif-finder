@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { GiphyFetch } from "@giphy/js-fetch-api";
+// import axios from "axios";
 
 const Context = React.createContext(null);
 
 const ContextProvider = ({ children }) => {
   const [giphyEndPoint, setGiphyEndPoint] = useState("trending");
-  const [giphySearchHistory, setGiphySearchHistory] = useState([]);
+  const [giphySearchHistory, setGiphySearchHistory] = useState(["trending"]);
   const [giphyData, setGiphyData] = useState([]);
 
   useEffect(() => {
-    const giphyKey = process.env.REACT_APP_GIPHY_KEY;
+    const apiKey = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
 
-    const giphyUrl = `https://api.giphy.com/v1/gifs/search?api_key=${giphyKey}&q=${giphyEndPoint}&limit=20&offset=0&rating=G&lang=en`;
-
-    const getData = async (url) => {
+    const getData = async (key) => {
       try {
-        const response = await axios.get(url);
-        setGiphyData(response.data.data);
+        const gifs = await key.search(giphyEndPoint, {
+          sort: "relevant",
+          lang: "es",
+          limit: 18,
+          type: "gifs",
+        });
+
+        setGiphyData(gifs.data);
       } catch (error) {
-        alert(error.message);
+        console.log(error);
       }
     };
 
-    getData(giphyUrl);
+    getData(apiKey);
   }, [giphyEndPoint]);
 
   return (
