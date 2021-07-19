@@ -13,13 +13,13 @@ function Navigation() {
     textDecoration: "none",
   };
 
-  const navBar = <FontAwesomeIcon icon={faBars} size="3x" color="#8B5CF6" />;
+  const navBar = <FontAwesomeIcon icon={faBars} size="2x" color="#8B5CF6" />;
 
   return (
     <React.Fragment>
       <button
         style={buttonStyle}
-        className="btn btn-transparent position-fixed top-1 end-0 mt-3"
+        className="btn btn-transparent position-fixed top-0 end-0 mt-3"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasWithBothOptions"

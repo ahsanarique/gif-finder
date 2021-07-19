@@ -12,6 +12,7 @@ const GiphyHistory = () => {
     <div className="list-group mt-2">
       {giphySearchHistory.map((history) => (
         <button
+          key={history + Math.random(100)}
           onClick={() => setGiphyEndPoint(history)}
           style={textColor}
           className="fs-4 fw-bold fst-italic list-group-item list-group-item-action"

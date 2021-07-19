@@ -15,6 +15,7 @@ const GiphyContent = ({ giphyData }) => {
     <div className="d-flex mb-5 justify-content-center flex-wrap">
       {giphyData.map((gif) => (
         <a
+          key={gif.id}
           style={{ textDecoration: "none" }}
           href={gif.bitly_url}
           target="_blank"
@@ -22,7 +23,6 @@ const GiphyContent = ({ giphyData }) => {
         >
           <div
             style={gifCard}
-            key={gif.id}
             className="card m-2 d-flex align-items-center justify-content-center bg-dark text-light text-center animated"
           >
             <div className="w-100 mt-2">
