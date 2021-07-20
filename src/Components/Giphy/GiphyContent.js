@@ -12,6 +12,14 @@ const GiphyContent = ({ giphyData }) => {
   const gifSize = {
     height: "200px",
   };
+
+  const manageTitle = (title) => {
+    if (title.length > 50) {
+      const titleShortened = title.split("").slice(0, 46).join("") + "....";
+      return titleShortened;
+    } else return title;
+  };
+
   return (
     <div className="d-flex mb-5 justify-content-center flex-wrap">
       {giphyData.length < 1 && <Spinner animation="border" variant="dark" />}
@@ -36,7 +44,7 @@ const GiphyContent = ({ giphyData }) => {
               />
             </div>
             <div className="card-body">
-              <h5 className="card-title">{gif.title}</h5>
+              <h5 className="card-title">{manageTitle(gif.title)}</h5>
             </div>
           </div>
         </a>
