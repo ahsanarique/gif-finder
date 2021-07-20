@@ -2,7 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 
-const GiphySearch = ({ setGiphyEndPoint, setGiphySearchHistory }) => {
+const GiphySearch = ({
+  setGiphyEndPoint,
+  setGiphyData,
+  setGiphySearchHistory,
+}) => {
   const {
     register,
     handleSubmit,
@@ -10,6 +14,7 @@ const GiphySearch = ({ setGiphyEndPoint, setGiphySearchHistory }) => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setGiphyData([]);
     setGiphyEndPoint(data.value);
     setGiphySearchHistory((prev) => [...prev, data.value]);
   };
@@ -27,11 +32,10 @@ const GiphySearch = ({ setGiphyEndPoint, setGiphySearchHistory }) => {
           <InputGroup.Text id="inputGroup-sizing-lg" className="fw-bolder fs-3">
             #
           </InputGroup.Text>
-          {errors.value && (
-            <span className="text-danger">This field is required</span>
-          )}
+
           <FormControl
             className="fw-bolder fs-3"
+            placeholder={errors.value ? "This field is required" : ""}
             defaultValue="trending"
             {...register("value", { required: true })}
           />

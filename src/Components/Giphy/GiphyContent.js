@@ -1,4 +1,5 @@
 import React from "react";
+import { Spinner } from "react-bootstrap";
 import "./giphyContent.css";
 
 const GiphyContent = ({ giphyData }) => {
@@ -13,6 +14,7 @@ const GiphyContent = ({ giphyData }) => {
   };
   return (
     <div className="d-flex mb-5 justify-content-center flex-wrap">
+      {giphyData.length < 1 && <Spinner animation="border" variant="dark" />}
       {giphyData.map((gif) => (
         <a
           key={gif.id}
@@ -29,7 +31,7 @@ const GiphyContent = ({ giphyData }) => {
               <img
                 style={gifSize}
                 src={gif.images.preview_gif.url}
-                className="card-img-top p-2 w-75"
+                className="card-img-top mt-2 w-75"
                 alt="..."
               />
             </div>

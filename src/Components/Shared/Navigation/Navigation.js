@@ -1,24 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import GiphyHistory from "../../Giphy/GiphyHistory";
+import RedditHistory from "../../Reddit/RedditHistory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Navigation() {
-  const buttonStyle = {
+  const location = useLocation();
+
+  const menuButtonStyle = {
     zIndex: "1000",
+    color: location.pathname === "/reddit" ? "#ff4500" : "#8B5CF6",
   };
 
   const linkRemover = {
     textDecoration: "none",
   };
 
-  const navBar = <FontAwesomeIcon icon={faBars} size="2x" color="#8B5CF6" />;
+  const navBar = <FontAwesomeIcon icon={faBars} size="2x" />;
 
   return (
     <React.Fragment>
       <button
-        style={buttonStyle}
+        style={menuButtonStyle}
         className="btn btn-transparent position-fixed top-0 end-0 mt-3"
         type="button"
         data-bs-toggle="offcanvas"
@@ -47,6 +51,7 @@ function Navigation() {
           <div className="list-group">
             <Link style={linkRemover} to="/">
               <button
+                style={{ color: "#8B5CF6" }}
                 className="list-group-item list-group-item-action fs-3 fst-italic mb-2"
                 type="button"
               >
@@ -55,6 +60,7 @@ function Navigation() {
             </Link>
             <Link style={linkRemover} to="/reddit">
               <button
+                style={{ color: "#ff4500" }}
                 className="list-group-item list-group-item-action fs-3 fst-italic"
                 type="button"
               >
@@ -64,7 +70,8 @@ function Navigation() {
 
             <div className="mt-5">
               <h5 className="fs-3">Search History</h5>
-              <GiphyHistory />
+              {location.pathname === "/" && <GiphyHistory />}
+              {location.pathname === "/reddit" && <RedditHistory />}
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import GiphyContent from "./GiphyContent";
 import { Context } from "../../Context/Context";
 
 const Giphy = () => {
-  const { giphyData, setGiphyEndPoint, setGiphySearchHistory } =
+  const { giphyData, setGiphyData, setGiphyEndPoint, setGiphySearchHistory } =
     useContext(Context);
 
   return (
@@ -12,6 +12,7 @@ const Giphy = () => {
       <GiphySearch
         setGiphyEndPoint={setGiphyEndPoint}
         setGiphySearchHistory={setGiphySearchHistory}
+        setGiphyData={setGiphyData}
       />
 
       <GiphyContent giphyData={giphyData} />

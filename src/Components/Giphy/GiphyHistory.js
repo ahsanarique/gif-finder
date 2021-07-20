@@ -17,7 +17,7 @@ const GiphyHistory = () => {
           style={textColor}
           className="fs-4 fw-bold fst-italic list-group-item list-group-item-action"
         >
-          {history}
+          <span className="me-3">#</span> {history}
         </button>
       ))}
     </div>
