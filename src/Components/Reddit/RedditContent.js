@@ -1,4 +1,5 @@
 import React from "react";
+import "./redditContent.css";
 import { Spinner } from "react-bootstrap";
 
 const RedditContent = ({ redditData }) => {
@@ -32,7 +33,7 @@ const RedditContent = ({ redditData }) => {
         >
           <div
             style={gifCard}
-            className="card m-2 d-flex align-items-center justify-content-center bg-dark text-light text-center animated"
+            className="card m-2 d-flex align-items-center justify-content-center bg-dark text-light text-center reddit-animated"
           >
             <div className="w-100 mt-2">
               <img
