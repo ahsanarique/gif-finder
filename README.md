@@ -27,3 +27,7 @@
 ### Reddit:
 
 ![Reddit](/images/reddit.png)
+
+### Responsiveness:
+
+![responsiveness](/images/responsiveness.jpg)
