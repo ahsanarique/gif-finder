@@ -8,6 +8,7 @@
 
 - Javascript
 - React
+- Bootstrap & React-Bootstrap
 - React Router
 - React Hook Form
 - Giphy API: https://developers.giphy.com/docs/api
